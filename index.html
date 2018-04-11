@@ -1,25 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAesTaGBcfwg7KuTooDZd7jnOI7xGffDus&libraries=places"></script>
-    <title>google api test</title>
-    <script src="assets/javascript/game.js"></script>
-    <style>
-    html, body, #map {
-        height: 75%;
-        width: 75%;
-        margin: 0px;
-        padding: 0px;
-    }
-        </style>
-</head>
-<body>
-    <div id="map">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- reset css -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <!-- custom css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- bootstrap CSS  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <!-- webapp logic -->
+  <script type="text/javascript" src="assets/js/game.js"></script>
 
+  <title>Project 1</title>
+</head>
+<body >
+  <header>
+    <div class="container-fluid bg-dark text-light">
+      <div class="row  px-4 py-3">
+        <div id="storedUserData" class="col-12 col-md-6 text-center text-md-left">
+          <div id="shoppingCartAmount">shopping cart icon and number of items in cart</div>
+        </div>
+        <div class="col-12 col-md-6 d-flex d-flex justify-content-center justify-content-md-end">
+          <h1 class="d-flex align-self-center mt-3 mt-md-0">Project 1</h1>
+        </div>
+      </div>
     </div>
-    
+  </header>
+  <section class="container-fluid flex-grow">
+    <div class="row">
+      <div  class="col-md-8 order-md-2 pt-2">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Search Google for the best services in your area</strong></h3>
+          </div>
+          <br>
+          <div class="panel-body">
+            <!-- Entry Form -->
+            <form>
+              <div class="form-group">
+                <!-- <label for=""></label> -->
+                <input type="text" class="form-control" id="searchGoogle">
+              </div>
+              <!-- button -->
+              <button type="submit" class="btn btn-primary" id="userInputButton">Submit</button>
+            </form>
+            <br>
+            <table class="table table-hover">
+              <tbody>
+                <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+                <div class="bg-faded mb-3">
+                  <h5 class="card-header" id="parsedApiObject">Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                </div>
+                <br>
+                <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+                <div class="bg-faded mb-3">
+                  <h5 class="card-header" id="parsedApiObject">Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                </div>
+                <br>
+                <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+                <div class="bg-faded mb-3">
+                  <h5 class="card-header" id="parsedApiObject">Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 order-md-1 pt-3">
+        <div class="bg-faded mb-3">
+          <h5 class="card-header">simulated results pinned by user</h5>
+          <div class="card-body">
+            <br>
+            <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+            <div class="bg-faded mb-3">
+              <h5 class="card-header" id="pinnedApiObject">Pinned Search result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+            </div>
+            <br>
+            <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+            <div class="bg-faded mb-3">
+              <h5 class="card-header" id="pinnedApiObject">Pinned Search result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+            </div>
+            <br>
+            <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+            <div class="bg-faded mb-3">
+              <h5 class="card-header" id="pinnedApiObject">Pinned Search result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+            </div>
+            <br>
+            <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
+            <div class="bg-faded mb-3">
+              <h5 class="card-header" id="pinnedApiObject">Pinned Search result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-dark text-white mt-4">
+    <div class="container-fluid py-3">
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Project 1</h5>
+        </div>
+        <div class="col-md-3">col1</div>
+        <div class="col-md-3">col2</div>
+        <div class="col-md-3">col3</div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"><span class="small"><br>UCLA Full Stack Web Dev Bootcamp 2018</span></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3 text-right small align-self-end">©2018 byteMedia</div>
+      </div>
+    </div>
+  </footer>
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
