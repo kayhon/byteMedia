@@ -9,7 +9,7 @@ function initialize() {
     var request = {
         location: startMapCenter,
         radius: '5000',
-        type: ['resturaunts']
+        type: ['restaurants']
     };
 
     service = new google.maps.places.PlacesService(map);
@@ -24,6 +24,7 @@ function callback(results, status) {
         }
     }
 }
+
 function createMarker(place) {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
