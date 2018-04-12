@@ -1,0 +1,9 @@
+/* #mapDiv establishes a div for the map to render into */
+#mapDiv {
+  width: auto;
+  height:300px;
+}
+/* #map tells the map to occupy 100% of the div */
+#map {
+  height: 100%;
+}
