@@ -5,7 +5,7 @@ function initialize() {
         center: startMapCenter,
         zoom: 13
     });
-    
+
     var request = {
         location: startMapCenter,
         radius: '5000',

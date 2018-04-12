@@ -14,8 +14,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAesTaGBcfwg7KuTooDZd7jnOI7xGffDus&libraries=places"></script>
   <!-- webapp logic -->
-  <script type="text/javascript" src="assets/js/game.js"></script>
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
 
   <title>Project 1</title>
 </head>
@@ -37,7 +38,7 @@
       <div  class="col-md-8 order-md-2 pt-2">
         <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Search Google for the best services in your area</strong></h3>
+            <h3 class="panel-title text-center"><strong>Search Google for the best services in your area</strong></h3>
           </div>
           <br>
           <div class="panel-body">
@@ -53,20 +54,17 @@
             <br>
             <table class="table table-hover">
               <tbody>
-                <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
-                <div class="bg-faded mb-3">
-                  <h5 class="card-header" id="parsedApiObject">Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                <!-- google api map renders to DOM here -->
+                <div id="mapDiv">
+                  <div id="map"></div>
                 </div>
+                <!-- end map render -->
                 <br>
                 <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
                 <div class="bg-faded mb-3">
-                  <h5 class="card-header" id="parsedApiObject">Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
+                  <h5 class="card-header" id="parsedApiObject">SAMPLE Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
                 </div>
                 <br>
-                <!-- OK to delete. This div is just an example of something jquery will render to DOM -->
-                <div class="bg-faded mb-3">
-                  <h5 class="card-header" id="parsedApiObject">Google API result: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h5>
-                </div>
               </tbody>
             </table>
           </div>
