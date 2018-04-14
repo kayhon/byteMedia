@@ -12,6 +12,8 @@ function runQuery() {
 $("#userInputButton").on("click", function() {
     event.preventDefault();
     runQuery();
+
+    // this is the query that is being sent to the api (search parameters)
   
     var request = {
         location: startMapCenter,
