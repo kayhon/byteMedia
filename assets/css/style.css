@@ -1,12 +1,81 @@
+/* ________________________________________________________________ */
+/* map */
+/* ________________________________________________________________ */
+
 /* #mapDiv establishes a div for the map to render into */
 #mapDiv {
   width: auto;
-  height:300px;
+  height:550px;
 }
 /* #map tells the map to occupy 100% of the div */
 #map {
   height: 100%;
 }
 
-----------------------------
+/* ________________________________________________________________ */
+/* result panels */
+/* ________________________________________________________________ */
 
+.container {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+  height: auto;
+}
+
+.container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 2%;
+  width:300px;
+}
+
+.container span {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+/* ________________________________________________________________ */
+/* responsive design*/
+/* ________________________________________________________________ */
+
+@media (max-width: 500px) {
+  .container {
+    text-align: center;
+  }
+  .container img {
+    margin: auto;
+    float: none;
+    display: block;
+
+  }
+}
+
+/* ________________________________________________________________ */
+/* nicer input box */
+/* ________________________________________________________________ */
+
+input[type=text] {
+  font-size: 18px;
+  background-color: #f7f7f7;
+  width: 100%;
+  padding: 13px 13px 13px 20px;
+  box-sizing: border-box;
+}
+
+/* ________________________________________________________________ */
+/* wrap text to image */
+/* ________________________________________________________________ */
+
+.textWrap {
+  float: auto;
+  margin-right: 10px;
+}
