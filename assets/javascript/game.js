@@ -2,6 +2,21 @@ var map;
 var locationInput = "";
 var typeInput = "";
 var startMapCenter = new google.maps.LatLng(37.09024,-95.71289100000001);
+var address
+
+
+function appendHTML(img , name , address, phone , rating ) {
+    var businessCard = "";
+        businessCard += "<div class='container' id='pinned_bizzcard1'>" 
+        businessCard += "<img src=" + img + "alt='Avatar' >"
+        businessCard += "<div class='card-body textWrap'>"
+        businessCard += "<h5 class='BizzName'>" + name + "</h5>"
+        businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
+        businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
+        businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
+     
+        $("#leftSection").append(businessCard);
+};
  
 function initialize() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -25,6 +40,8 @@ $("#userInputButton").on("click", function() {
     var geocoder = new google.maps.Geocoder();
     var address = locationInput;
     var queryLatLng = "";
+    var ipPass = "";
+    var photoRef = "";
 
     if (geocoder) {
         geocoder.geocode({ 'address': address }, function (results, status) {
@@ -56,7 +73,44 @@ $("#userInputButton").on("click", function() {
                     for (var i = 0; i < results.length; i++) {
                         var place = results[i];
                         createMarker(results[i]);
-                        console.log(results[i])
+                        console.log(results[i]);
+                        idPass = results[i].place_id;
+                        console.log(idPass);
+                        
+
+                        function detailsCall() {
+                            
+                            
+
+                            var request = {
+                                placeId: idPass
+                            };
+
+                            service = new google.maps.places.PlacesService(map);
+                            service.getDetails(request, callback);
+
+                            
+
+                            function callback(resultsTwo, status) {
+                                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                                    console.log(resultsTwo);
+                                    console.log(resultsTwo.photos[0].getUrl({"maxWidth":300,"minWidth":300}));
+                                    console.log(resultsTwo.name);
+                                    console.log(resultsTwo.formatted_address);
+                                    console.log(resultsTwo.formatted_phone_number);
+                                    console.log(resultsTwo.rating);
+                                    // function appendHTML(img , name , phone , rating )
+                                    appendHTML(resultsTwo.photos[0].getUrl({"maxWidth":300,"minWidth":300}) , resultsTwo.name , resultsTwo.formatted_address , resultsTwo.formatted_phone_number , resultsTwo.rating)
+                                }
+                            }
+                            
+                        };
+
+                        detailsCall();
+
+
+                        
+                        
                     }
                 }
             }
