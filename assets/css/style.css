@@ -1,5 +1,10 @@
+/* 1) map CSS */
+/* 2) api result panel */
+/* 3) font & text */
+/* 4) mobile responsive */
+
 /* ________________________________________________________________ */
-/* map */
+/* 1) map */
 /* ________________________________________________________________ */
 
 /* #mapDiv establishes a div for the map to render into */
@@ -7,13 +12,14 @@
   width: auto;
   height:550px;
 }
+
 /* #map tells the map to occupy 100% of the div */
 #map {
   height: 100%;
 }
 
 /* ________________________________________________________________ */
-/* result panels */
+/* 2) api result panel */
 /* ________________________________________________________________ */
 
 .container {
@@ -35,7 +41,7 @@
   float: left;
   margin-right: 20px;
   border-radius: 2%;
-  width:300px;
+  /* height: 200px; */
 }
 
 .container span {
@@ -43,24 +49,9 @@
   margin-right: 15px;
 }
 
-/* ________________________________________________________________ */
-/* responsive design*/
-/* ________________________________________________________________ */
-
-@media (max-width: 500px) {
-  .container {
-    text-align: center;
-  }
-  .container img {
-    margin: auto;
-    float: none;
-    display: block;
-
-  }
-}
 
 /* ________________________________________________________________ */
-/* nicer input box */
+/* 3) font & text */
 /* ________________________________________________________________ */
 
 input[type=text] {
@@ -71,11 +62,14 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-/* ________________________________________________________________ */
-/* wrap text to image */
-/* ________________________________________________________________ */
-
 .textWrap {
   float: auto;
   margin-right: 10px;
 }
+
+/* .googleFont {
+  font-family: 'Helvetica', sans-serif;
+} */
+/* ________________________________________________________________ */
+/* 4) mobile responsive design*/
+/* ________________________________________________________________ */
