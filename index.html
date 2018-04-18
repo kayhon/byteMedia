@@ -15,10 +15,6 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- firebase -->
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
   <!-- google maps API -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAesTaGBcfwg7KuTooDZd7jnOI7xGffDus&libraries=places"></script>
@@ -35,11 +31,7 @@
   <div class="container-fluid flex-grow">
     <div class="row">
       <!-- right section -->
-
-      <section  id="rightSection" class="col-md-6 order-md-2 pt-2">
-
-    
-
+      <section  class="col-md-8 order-md-2 pt-2">
         <div class="panel panel-success">
           <div class="panel-heading">
             <h2 class="panel-title text-center">Search Google for services in your area</h2>
@@ -116,68 +108,9 @@
         </div>
       </section>
       <!-- left section -->
-
-      
-      <section id="leftSection" class="col-md-6 order-md-1 pt-3">
-        <h2 class="text-center">Responsive Business cards</h2>
-        <div class="container" id="pinned_bizzcard1">
-          <img src="assets/images/wedflorist.jpg" alt="Avatar" >
-          <div class="card-body textWrap">
-            <h5 class="BizzName">"Business Name1" on Card</h5>
-            <p class="card-text" id="address1">11111 test address, place CA 91356</p>
-            <p class="card-text" id="phoneNumber1"> 310 555 1212</p>
-            <p class="card-text" id="hours1">Opening hours:</p>
-            <p class="card-text" id="rating1">Ratings: under construction</p>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-          </div>
-        </div>
-
-        <div class="container" id="pinned_bizzcard2">
-          <img src="assets/images/dj.jpg" alt="Avatar" >
-          <div class="card-body textWrap">
-            <h5 class="BizzName">"Business Name2" on Card</h5>
-            <p class="card-text" id="address2">11111 test address, place CA 91356</p>
-            <p class="card-text" id="phoneNumber2"> 310 555 1212</p>
-            <p class="card-text" id="hours2">Opening hours:</p>
-            <p class="card-text" id="rating2">Ratings: under construction</p>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-          </div>
-        </div>
-
-        <div class="container" id="pinned_bizzcard3">
-          <img src="assets/images/bartender.jpg" alt="Avatar" >
-          <div class="card-body textWrap">
-            <h5 class="BizzName">"Business Name3" on Card</h5>
-            <p class="card-text" id="address3">11111 test address, place CA 91356</p>
-            <p class="card-text" id="phoneNumber3"> 310 555 1212</p>
-            <p class="card-text" id="hours3">Opening hours:</p>
-            <p class="card-text" id="rating3">Ratings: under construction</p>
-            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-          </div>
-        </div>
-
-        <!-- <div class="container">
-        <img src="assets/images/wedflorist.jpg" alt="Avatar" >
-        <p><span>Rebecca Flex.</span> CEO at Company.</p>
-        <p>No one is better than John Doe.</p>
-      </div> -->
-
-
-      <!-- bootstrap4 bizzcard 0 -->
-
-      <!-- <div class="card" id="pinned_bizzcard0" style="width: 18rem;"> -->
-      <!-- <div class="card" id="pinned_bizzcard0">
-      <img class="card-img-top" src="assets/images/wedflorist.jpg" alt="Image of business">
-      <div class="card-body">
-      <h5 class="BizzName">"Business Name" on Card</h5>
-      <p class="card-text" id="address0">00000 test address, place CA 91356</p>
-      <p class="card-text" id="phoneNumber0"> 310 555 1212</p>
-      <p class="card-text" id="hours0">Opening hours:</p>
-      <p class="card-text" id="rating0">Ratings: under construction</p>
-      Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-
-
+      <section class="col-md-4 order-md-1 pt-3">
+        <div id="left-side"></div>
+      </section>
     </div>
   </div>
   <footer class="bg-dark text-white mt-4">
@@ -196,19 +129,14 @@
         <div class="col-md-3 text-right small align-self-end">©2018 byteMedia</div>
       </div>
     </div>
-
-
-  </div>
-</footer>
-
-<!-- webapp logic -->
-<script type="text/javascript" src="assets/javascript/game.js"></script>
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
- 
-  
-      
+  </footer>
+  <!-- webapp logic -->
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <!-- DOM click event logic -->
+  <script type="text/javascript" src="assets/javascript/click.js"></script>
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
