@@ -13,6 +13,10 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- firebase -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAesTaGBcfwg7KuTooDZd7jnOI7xGffDus&libraries=places"></script>
   <title>Project 1</title>
@@ -33,7 +37,7 @@
   <div class="container-fluid flex-grow">
     <div class="row">
       <!-- right section -->
-      <section  class="col-md-6 order-md-2 pt-2">
+      <section  id="rightSection" class="col-md-6 order-md-2 pt-2">
         <div class="panel panel-success">
           <div class="panel-heading">
             <h2 class="panel-title text-center">Search Google for services in your area</h2>
@@ -66,7 +70,7 @@
         </div>
       </section>
       <!-- left section -->
-      <section class="col-md-6 order-md-1 pt-3">
+      <section id="leftSection" class="col-md-6 order-md-1 pt-3">
         <h2 class="text-center">Responsive Business cards</h2>
         <div class="container" id="pinned_bizzcard1">
           <img src="assets/images/wedflorist.jpg" alt="Avatar" >
@@ -187,7 +191,6 @@ Some quick example text to build on the card title and make up the bulk of the c
 <!-- webapp logic -->
 <script type="text/javascript" src="assets/javascript/game.js"></script>
 <!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
