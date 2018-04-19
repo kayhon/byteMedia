@@ -26,8 +26,8 @@ function initialize() {
 };
 
 function runQuery() {
-    locationInput = $("#placeask").val().trim();
-    typeInput = $("#typeask").val().trim();
+    locationInput = $("#location").val().trim();
+    typeInput = $("#search").val().trim();
     console.log(typeInput);
     console.log(locationInput);
 };
@@ -138,3 +138,15 @@ $("#userInputButton").on("click", function() {
 });
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
+//  firebase
+
+var config = {
+    apiKey: "AIzaSyCTaFSGJiTN5r5qpLnXTOLgECDvUfWXvr4",
+    authDomain: "byteme-200420.firebaseapp.com",
+    databaseURL: "https://byteme-200420.firebaseio.com",
+    projectId: "byteme-200420",
+    storageBucket: "byteme-200420.appspot.com",
+    messagingSenderId: "65093761395"
+};
