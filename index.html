@@ -31,14 +31,14 @@
   <div class="container-fluid flex-grow">
     <div class="row">
       <!-- right section -->
-      <section  id="rightSection" class="col-md-8 order-md-2 pt-2">
+      <section  class="col-md-8 order-md-2 pt-2">
         <div class="panel panel-success">
           <div class="panel-heading">
             <h2 class="panel-title text-center">Search Google for services in your area</h2>
           </div>
           <br>
+          <!-- Entry Form -->
           <div class="panel-body">
-            <!-- Entry Form -->
             <form>
               <div class="form-group">
                 <h4>Where</h4>
@@ -59,57 +59,16 @@
                 <!-- end map render -->
                 <br>
                 <!-- search results will be place here -->
-                <div id="right-side"></div>
+                <div id="rightSide"></div>
                 <!-- end results div -->
-                <!-- begin mock results -->
-                <div class="container"  id="pinned_bizzcard1">
-                  <!-- <img src="assets/images/wedflorist.jpg" class="img img-thumbnail" alt="Avatar" > -->
-                  <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar" >
-                  <div class="card-body textWrap">
-                    <h5 class="BizzName">Business Name: one</h5>
-                    <p class="card-text" id="address1">Address:</p>
-                    <p class="card-text" id="phoneNumber1">Phone Number:</p>
-                    <p class="card-text" id="hours1">Opening Hours:</p>
-                    <p class="card-text" id="rating1">Ratings:</p>
-                    <!-- <a href="#" class="btn btn-primary">delete</a> -->
-                    <button class="btn btn-primary" class = 'dlt_btn' type='button' row-id="pinned_bizzcard1">Delete</button>
-                  </div>
-                </div>
-                <div class="container" id="pinned_bizzcard2">
-                  <!-- <img src="assets/images/dj.jpg" class="img img-thumbnail" alt="Avatar" > -->
-                  <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar" >
-                  <div class="card-body textWrap">
-                    <h5 class="BizzName">Business Name: two</h5>
-                    <p class="card-text" id="address1">Address:</p>
-                    <p class="card-text" id="phoneNumber1">Phone Number:</p>
-                    <p class="card-text" id="hours1">Opening Hours:</p>
-                    <p class="card-text" id="rating1">Ratings:</p>
-                    <!-- <a href="#" class="btn btn-primary">delete</a> -->
-                    <button class="btn btn-primary" class = 'dlt_btn' type='button' row-id="pinned_bizzcard2">Delete</button>
-                  </div>
-                </div>
-                <div class="container" id="pinned_bizzcard3">
-                  <!-- <img src="assets/images/bartender.jpg" class="img img-thumbnail" alt="Avatar" > -->
-                  <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar" >
-                  <div class="card-body textWrap text-centerf   ">
-                    <h5 class="BizzName">Business Name: three</h5>
-                    <p class="card-text" id="address1">Address:</p>
-                    <p class="card-text" id="phoneNumber1">Phone Number:</p>
-                    <p class="card-text" id="hours1">Opening Hours:</p>
-                    <p class="card-text" id="rating1">Ratings:</p>
-                    <!-- <a href="#" class="btn btn-primary">delete</a> -->
-                    <button class="btn btn-primary" class = 'dlt_btn' type='button' row-id="pinned_bizzcard3">Delete</button>
-                  </div>
-                </div>
-                <!-- end mock results -->
               </div>
             </div>
           </div>
         </div>
       </section>
       <!-- left section -->
-      <section  id="leftSection" class="col-md-4 order-md-1 pt-3">
-        <div id="left-side"></div>
+      <section class="col-md-4 order-md-1 pt-3">
+        <div id="leftSide"></div>
       </section>
     </div>
   </div>
@@ -133,9 +92,8 @@
   <!-- webapp logic -->
   <script type="text/javascript" src="assets/javascript/game.js"></script>
   <!-- DOM click event logic -->
-  <script type="text/javascript" src="assets/javascript/click.js"></script>
-  <!-- JS, Popper.js, and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="assets/javascript/toggler.js"></script>
+  <!-- JS and Popper.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
