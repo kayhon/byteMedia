@@ -18,97 +18,117 @@
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
   <!-- google maps API -->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAesTaGBcfwg7KuTooDZd7jnOI7xGffDus&libraries=places"></script>
-  <title>Project 1</title>
+  <title>ByteMedia_project1</title>
 </head>
 <body >
   <header>
-    <div class="container-fluid bg-dark jumbotron text-light">
-      <div class="text-center px-4 py-3">
-        <h1>Project 1(plan your wedding)</h1>
+    <div class="container-fluid text-light">
+    
+      <!--jumbotron-->
+      <div class="jumbotron">
+        <div class="row  px-4 py-3">
+          <div id="storedUserData" class="col-12 col-md-6 text-center text-md-left">
+    
+            <!--shopping Cart!-->
+            <div id="shoppingCartAmount">
+              <button type="button" class="btn btn-outline-primary btn-sm">
+                <span class="glyphicon glyphicon-shoppingcart"></span>shoppingCart
+              </button>
+            </div>
+    
+          </div>
+          <div class="col-12 col-md-6 d-flex d-flex justify-content-center justify-content-md-end">
+            <h1 class="d-flex align-self-center mt-3 mt-md-0">ByteMedia Project1</h1>
+          </div>
+        </div>
       </div>
+    
     </div>
   </header>
   <div class="container-fluid flex-grow">
     <div class="row">
       <!-- right section -->
-      <section  id="rightSection" class="col-md-8 order-md-2 pt-2">
+      <section  id="rightSection" class="col-md-6 order-md-2 pt-2">
         <div class="panel panel-success">
           <div class="panel-heading">
-            <h2 class="panel-title text-center">Search Google for services in your area</h2>
+            <h2 class="panel-title text-center">Search for services in your area</h2>
           </div>
           <br>
           <div class="panel-body">
             <!-- Entry Form -->
             <form>
               <div class="form-group">
-                <h4>Where</h4>
-                <input type="text" class="form-control" id="placeask">
-                <h4>What</h4>
-                <input type="text" class="form-control" id="typeask">
+                <input type="text" class="form-control" id="location" placeholder="location">
+                <div class="input-group-btn">
+                    <input type="text" class="form-control" id="search" placeholder="search">
+                    <!-- button -->
+                    <button type="submit" class="btn btn-primary" id="userInputButton">Submit</button>
+                </div>
+                
               </div>
-              <!-- button -->
-              <button type="submit" class="btn btn-primary" id="userInputButton">Submit</button>
             </form>
             <br>
             <div class="table table-hover">
-              <div>
                 <!-- google api map renders to DOM here -->
                 <div id="mapDiv">
                   <div id="map"></div>
                 </div>
                 <!-- end map render -->
-                <br>
                 <!-- search results will be place here -->
-                <div id="right-side"></div>
+               
                 <!-- end results div -->
                 <!-- begin mock results -->
-                <div class="container"  id="pinned_bizzcard1">
-                  <!-- <img src="assets/images/wedflorist.jpg" class="img img-thumbnail" alt="Avatar" > -->
-                  <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar" >
-                  <div class="card-body textWrap">
-                    <h5 class="BizzName">Business Name: one</h5>
-                    <p class="card-text" id="address1">Address:</p>
-                    <p class="card-text" id="phoneNumber1">Phone Number:</p>
-                    <p class="card-text" id="hours1">Opening Hours:</p>
-                    <p class="card-text" id="rating1">Ratings:</p>
-                    <!-- <a href="#" class="btn btn-primary">delete</a> -->
-                    <button class="btn btn-primary" class = 'dlt_btn' type='button' row-id="pinned_bizzcard1">Delete</button>
-                  </div>
+                <div class="rightBottom">
+    <div class="container" id="pinned_bizzcard1">
+      <!-- <img src="assets/images/wedflorist.jpg" class="img img-thumbnail" alt="Avatar" > -->
+      <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar">
+      <div class="card-body textWrap">
+        <h5 class="BizzName">Business Name: one</h5>
+        <p class="card-text" id="address1">Address:</p>
+        <p class="card-text" id="phoneNumber1">Phone Number:</p>
+        <p class="card-text" id="hours1">Opening Hours:</p>
+        <p class="card-text" id="rating1">Ratings:</p>
+        <!-- <a href="#" class="btn btn-primary">delete</a> -->
+        <button class="btn btn-primary" class='dlt_btn' type='button' row-id="pinned_bizzcard1">Delete</button>
+      </div>
+    </div>
+    <div class="container" id="pinned_bizzcard2">
+      <!-- <img src="assets/images/dj.jpg" class="img img-thumbnail" alt="Avatar" > -->
+      <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar">
+      <div class="card-body textWrap">
+        <h5 class="BizzName">Business Name: two</h5>
+        <p class="card-text" id="address1">Address:</p>
+        <p class="card-text" id="phoneNumber1">Phone Number:</p>
+        <p class="card-text" id="hours1">Opening Hours:</p>
+        <p class="card-text" id="rating1">Ratings:</p>
+        <!-- <a href="#" class="btn btn-primary">delete</a> -->
+        <button class="btn btn-primary" class='dlt_btn' type='button' row-id="pinned_bizzcard2">Delete</button>
+      </div>
+    </div>
+    <div class="container" id="pinned_bizzcard3">
+      <!-- <img src="assets/images/bartender.jpg" class="img img-thumbnail" alt="Avatar" > -->
+      <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar">
+      <div class="card-body textWrap text-centerf   ">
+        <h5 class="BizzName">Business Name: three</h5>
+        <p class="card-text" id="address1">Address:</p>
+        <p class="card-text" id="phoneNumber1">Phone Number:</p>
+        <p class="card-text" id="hours1">Opening Hours:</p>
+        <p class="card-text" id="rating1">Ratings:</p>
+        <!-- <a href="#" class="btn btn-primary">delete</a> -->
+        <button class="btn btn-primary" class='dlt_btn' type='button' row-id="pinned_bizzcard3">Delete</button>
+      </div>
+    </div>
                 </div>
-                <div class="container" id="pinned_bizzcard2">
-                  <!-- <img src="assets/images/dj.jpg" class="img img-thumbnail" alt="Avatar" > -->
-                  <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar" >
-                  <div class="card-body textWrap">
-                    <h5 class="BizzName">Business Name: two</h5>
-                    <p class="card-text" id="address1">Address:</p>
-                    <p class="card-text" id="phoneNumber1">Phone Number:</p>
-                    <p class="card-text" id="hours1">Opening Hours:</p>
-                    <p class="card-text" id="rating1">Ratings:</p>
-                    <!-- <a href="#" class="btn btn-primary">delete</a> -->
-                    <button class="btn btn-primary" class = 'dlt_btn' type='button' row-id="pinned_bizzcard2">Delete</button>
-                  </div>
-                </div>
-                <div class="container" id="pinned_bizzcard3">
-                  <!-- <img src="assets/images/bartender.jpg" class="img img-thumbnail" alt="Avatar" > -->
-                  <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar" >
-                  <div class="card-body textWrap text-centerf   ">
-                    <h5 class="BizzName">Business Name: three</h5>
-                    <p class="card-text" id="address1">Address:</p>
-                    <p class="card-text" id="phoneNumber1">Phone Number:</p>
-                    <p class="card-text" id="hours1">Opening Hours:</p>
-                    <p class="card-text" id="rating1">Ratings:</p>
-                    <!-- <a href="#" class="btn btn-primary">delete</a> -->
-                    <button class="btn btn-primary" class = 'dlt_btn' type='button' row-id="pinned_bizzcard3">Delete</button>
-                  </div>
-                </div>
+           
                 <!-- end mock results -->
-              </div>
+              
             </div>
           </div>
         </div>
       </section>
       <!-- left section -->
-      <section  id="leftSection" class="col-md-4 order-md-1 pt-3">
+      <section  id="leftSection" class="col-md-6 order-md-1 pt-1">
+          <h2 class="text-center">Responsive Business cards</h2>
         <div id="left-side"></div>
       </section>
     </div>
@@ -117,16 +137,28 @@
     <div class="container-fluid py-3">
       <div class="row">
         <div class="col-md-3">
-          <h5>Project 1</h5>
+          <h5>Project 1-ByteMedia</h5>
         </div>
         <div class="col-md-3">col1</div>
         <div class="col-md-3">col2</div>
-        <div class="col-md-3">col3</div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="collapse" data-target="#demo">Compliment!</button>
+            <div id="demo" class="collapse">
+              <textarea class="form-control" rows="5" id="comment"></textarea>
+              <button type="button" class="btn btn-outline-secondary btn-sm">submit</button>
+            </div>
+  
+          </div>
+        </div>
       </div>
       <div class="row">
-        <div class="col-md-6"><span class="small"><br>UCLA Full Stack Web Dev Bootcamp 2018</span></div>
+        <div class="col-md-6">
+          <span class="small">
+            <br>UCLA Full Stack Web Dev Bootcamp 2018</span>
+        </div>
         <div class="col-md-3"></div>
-        <div class="col-md-3 text-right small align-self-end">©2018 byteMedia</div>
+        <div class="col-md-3 text-left small align-self-end">©2018 byteMedia</div>
       </div>
     </div>
   </footer>
