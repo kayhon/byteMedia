@@ -5,6 +5,10 @@ var startMapCenter = new google.maps.LatLng(37.09024,-95.71289100000001);
 var address
 var resultsZone = $('#display-objects');
 
+resultsZone.on('click', '#pinned_bizzcard', function() {
+
+  $(this).appendTo('#left-side');
+});
 
 $(document).on('click', 'button', function() {
   event.stopPropagation();
@@ -12,26 +16,28 @@ $(document).on('click', 'button', function() {
 })
 
 function appendHTML(img , name , address, phone , rating ) {
+  var businessCard = "";
+  businessCard += "<div class='container' id='pinned_bizzcard'>"
+  businessCard += "<button class=‘btn btn-primary dlt_btn’ type=‘button’>Delete</button>"
+  businessCard += "<img id='thumbnailimg' src=" + img + ">"
+  businessCard += "<div class='card-body textWrap'>"
+  businessCard += "<h5 class='BizzName'>" + name + "</h5>"
+  businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
+  businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
+  businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
+  businessCard += "</div>"
+  businessCard += "</div>"
 
-    var businessCard = "";
-        businessCard += "<div class='container' id='pinned_bizzcard'>" 
-        businessCard += "<button class=‘btn btn-primary dlt_btn’ type=‘button’>Delete</button>"
-        businessCard += "<img id='thumbnailimg' src=" + img + ">"
-        businessCard += "<div class='card-body textWrap'>"
-        businessCard += "<h5 id='BizzName'>" + name + "</h5>"
-        businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
-        businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
-        businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
-        businessCard += "</div>"
-        businessCard += "</div>"
-     
-        $("#display-objects").append(businessCard);
+
+
+
+
+  $("#display-objects").append(businessCard);
 
   $(businessCard).on('click', 'button', function() {
     console.log("hi");
     $(this).parent().remove();
   });
-
 };
 
 function initialize() {
@@ -109,50 +115,14 @@ $("#userInputButton").on("click", function() {
 
               function callback(resultsTwo, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-                    for (var i = 0; i < results.length; i++) {
-                        var place = results[i];
-                        createMarker(results[i]);
-                        console.log(results[i]);
-                        idPass = results[i].place_id;
-                        console.log(idPass);
-                        
-
-                        function detailsCall() {
-                            
-                            
-
-                            var request = {
-                                placeId: idPass
-                            };
-
-                            service = new google.maps.places.PlacesService(map);
-                            service.getDetails(request, callback);
-
-                            
-
-                            function callback(resultsTwo, status) {
-                                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                                    console.log(resultsTwo);
-                                    console.log(resultsTwo.photos[0].getUrl({"maxWidth":300,"minWidth":300}));
-                                    console.log(resultsTwo.name);
-                                    console.log(resultsTwo.formatted_address);
-                                    console.log(resultsTwo.formatted_phone_number);
-                                    console.log(resultsTwo.rating);
-                                    // function appendHTML(img , name , address , phone , rating )
-                                    appendHTML(resultsTwo.photos[0].getUrl({"maxWidth":200,"minWidth":200}) , resultsTwo.name , resultsTwo.formatted_address , resultsTwo.formatted_phone_number , resultsTwo.rating)
-                                }
-                            }
-                            
-                        };
-
-                        detailsCall();
-
-
-                        
-                        
-                    }
-
+                  console.log(resultsTwo);
+                  console.log(resultsTwo.photos[0].getUrl({"maxWidth":300,"minWidth":300}));
+                  console.log(resultsTwo.name);
+                  console.log(resultsTwo.formatted_address);
+                  console.log(resultsTwo.formatted_phone_number);
+                  console.log(resultsTwo.rating);
+                  // function appendHTML(img , name , phone , rating )
+                  appendHTML(resultsTwo.photos[0].getUrl({"maxWidth":200,"minWidth":200}) , resultsTwo.name , resultsTwo.formatted_address , resultsTwo.formatted_phone_number , resultsTwo.rating)
                 }
               }
 
@@ -194,8 +164,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 //  firebase
 
-
-
 var config = {
   apiKey: "AIzaSyCTaFSGJiTN5r5qpLnXTOLgECDvUfWXvr4",
   authDomain: "byteme-200420.firebaseapp.com",
@@ -204,51 +172,3 @@ var config = {
   storageBucket: "byteme-200420.appspot.com",
   messagingSenderId: "65093761395"
 };
-
-firebase.initializeApp(config);
-
-var database = firebase.database();
-
-console.log(firebase);
-
-function displayFirebase(img , name , address, phone , rating ) {
-    var businessCard = "";
-        businessCard += "<div class='container' id='pinned_bizzcard'>" 
-        businessCard += "<img id='thumbnailimg' src=" + img + ">"
-        businessCard += "<div class='card-body textWrap'>"
-        businessCard += "<h5 id='bizzName'>" + name + "</h5>"
-        businessCard += "<p class='card-text' id='address'>Address:" + address + "</p>"
-        businessCard += "<p class='card-text' id='phoneNumber'>Phone Number:" + phone + "</p>"
-        businessCard += "<p class='card-text' id='rating'>Ratings:" + rating + "</p>"
-        businessCard += "</div>"
-        businessCard += "</div>"
-     
-        $("#left-side").append(businessCard);
-};
-
-
-
-function add() {
-    event.preventDefault();
-
-var newBusiness = {
-    img: $('#thumbnailimg').val().trim(),
-    name: $('#BizzName').val().trim(),
-    address: $('#address1').val().trim(),
-    phone: $('#phoneNumber1').val().trim(),
-    rating: $("#rating1").val().trim()
-
-};
-
-database.ref().push(newBusiness);
-
-
-};
-
-
-// on click function push to variable arrays
-resultsZone.on('click', '#pinned_bizzcard', function() {
-    $(this).appendTo('#left-side');
-    add();
-  });
-
