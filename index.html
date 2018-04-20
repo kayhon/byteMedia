@@ -69,58 +69,14 @@
             </form>
             <br>
             <div class="table table-hover">
-                <!-- google api map renders to DOM here -->
-                <div id="mapDiv">
-                  <div id="map"></div>
-                </div>
-                <!-- end map render -->
-                <!-- search results will be place here -->
-               
-                <!-- end results div -->
-                <!-- begin mock results -->
-                <div class="rightBottom">
-    <div class="container" id="pinned_bizzcard1">
-      <!-- <img src="assets/images/wedflorist.jpg" class="img img-thumbnail" alt="Avatar" > -->
-      <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar">
-      <div class="card-body textWrap">
-        <h5 class="BizzName">Business Name: one</h5>
-        <p class="card-text" id="address1">Address:</p>
-        <p class="card-text" id="phoneNumber1">Phone Number:</p>
-        <p class="card-text" id="hours1">Opening Hours:</p>
-        <p class="card-text" id="rating1">Ratings:</p>
-        <!-- <a href="#" class="btn btn-primary">delete</a> -->
-        <button class="btn btn-primary" class='dlt_btn' type='button' row-id="pinned_bizzcard1">Delete</button>
-      </div>
-    </div>
-    <div class="container" id="pinned_bizzcard2">
-      <!-- <img src="assets/images/dj.jpg" class="img img-thumbnail" alt="Avatar" > -->
-      <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar">
-      <div class="card-body textWrap">
-        <h5 class="BizzName">Business Name: two</h5>
-        <p class="card-text" id="address1">Address:</p>
-        <p class="card-text" id="phoneNumber1">Phone Number:</p>
-        <p class="card-text" id="hours1">Opening Hours:</p>
-        <p class="card-text" id="rating1">Ratings:</p>
-        <!-- <a href="#" class="btn btn-primary">delete</a> -->
-        <button class="btn btn-primary" class='dlt_btn' type='button' row-id="pinned_bizzcard2">Delete</button>
-      </div>
-    </div>
-    <div class="container" id="pinned_bizzcard3">
-      <!-- <img src="assets/images/bartender.jpg" class="img img-thumbnail" alt="Avatar" > -->
-      <img src="http://lorempixel.com/200/200/" class="img" alt="Avatar">
-      <div class="card-body textWrap text-centerf   ">
-        <h5 class="BizzName">Business Name: three</h5>
-        <p class="card-text" id="address1">Address:</p>
-        <p class="card-text" id="phoneNumber1">Phone Number:</p>
-        <p class="card-text" id="hours1">Opening Hours:</p>
-        <p class="card-text" id="rating1">Ratings:</p>
-        <!-- <a href="#" class="btn btn-primary">delete</a> -->
-        <button class="btn btn-primary" class='dlt_btn' type='button' row-id="pinned_bizzcard3">Delete</button>
-      </div>
-    </div>
-                </div>
-           
-                <!-- end mock results -->
+              <!-- google api map renders to DOM here -->
+              <div id="mapDiv">
+                <div id="map"></div>
+              </div>
+              <!-- end map render -->
+              <div  id="display-objects" class="rightBottom">
+
+              </div>
               
             </div>
           </div>
@@ -129,7 +85,12 @@
       <!-- left section -->
       <section  id="leftSection" class="col-md-6 order-md-1 pt-1">
           <h2 class="text-center">Responsive Business cards</h2>
-        <div id="left-side"></div>
+        <div id="left-side">
+
+          <!-- this is where the thumbnail divs will append to on click -->
+        
+        </div>
+        
       </section>
     </div>
   </div>
@@ -163,7 +124,7 @@
     </div>
   </footer>
   <!-- webapp logic -->
-  <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <script type="text/javascript" src="assets/javascript/logic.js"></script>
   <!-- DOM click event logic -->
   <script type="text/javascript" src="assets/javascript/click.js"></script>
   <!-- JS, Popper.js, and jQuery -->

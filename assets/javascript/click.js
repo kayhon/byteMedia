@@ -1,13 +1,5 @@
-$("#pinned_bizzcard1").on("click", function() {
-  $("#pinned_bizzcard1").appendTo("#left-side");
-});
-
-$("#pinned_bizzcard2").on("click", function() {
-  $("#pinned_bizzcard2").appendTo("#left-side");
-});
-
-$("#pinned_bizzcard3").on("click", function() {
-  $("#pinned_bizzcard3").appendTo("#left-side");
+$("#pinned_bizzcard").on("click", function() {
+  $(this).appendTo("#left-side");
 });
 
 
