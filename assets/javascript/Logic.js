@@ -3,19 +3,26 @@ var locationInput = "";
 var typeInput = "";
 var startMapCenter = new google.maps.LatLng(37.09024,-95.71289100000001);
 var address
+var resultsZone = $('#display-left');
+
+resultsZone.find('#pinned_bizzcard').on('click', function() {
+    $(this).appendTo('#leftSide');
+  });
 
 
 function appendHTML(img , name , address, phone , rating ) {
     var businessCard = "";
-        businessCard += "<div class='container' id='pinned_bizzcard1'>" 
-        businessCard += "<img src=" + img + "alt='Avatar' >"
+        businessCard += "<div class='container' id='pinned_bizzcard'>" 
+        businessCard += "<img id='thumbnailimg' src=" + img + ">"
         businessCard += "<div class='card-body textWrap'>"
         businessCard += "<h5 class='BizzName'>" + name + "</h5>"
         businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
         businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
         businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
+        businessCard += "</div>"
+        businessCard += "</div>"
      
-        $("#leftSection").append(businessCard);
+        $("#display-objects").append(businessCard);
 };
  
 function initialize() {
@@ -100,7 +107,7 @@ $("#userInputButton").on("click", function() {
                                     console.log(resultsTwo.formatted_phone_number);
                                     console.log(resultsTwo.rating);
                                     // function appendHTML(img , name , phone , rating )
-                                    appendHTML(resultsTwo.photos[0].getUrl({"maxWidth":300,"minWidth":300}) , resultsTwo.name , resultsTwo.formatted_address , resultsTwo.formatted_phone_number , resultsTwo.rating)
+                                    appendHTML(resultsTwo.photos[0].getUrl({"maxWidth":200,"minWidth":200}) , resultsTwo.name , resultsTwo.formatted_address , resultsTwo.formatted_phone_number , resultsTwo.rating)
                                 }
                             }
                             
