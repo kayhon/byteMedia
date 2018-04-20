@@ -6,12 +6,16 @@ var address
 var resultsZone = $('#display-objects');
 
 
-
-
+$(document).on('click', 'button', function() {
+  event.stopPropagation();
+  $(this).parent().remove();
+})
 
 function appendHTML(img , name , address, phone , rating ) {
+
     var businessCard = "";
         businessCard += "<div class='container' id='pinned_bizzcard'>" 
+        businessCard += "<button class=‘btn btn-primary dlt_btn’ type=‘button’>Delete</button>"
         businessCard += "<img id='thumbnailimg' src=" + img + ">"
         businessCard += "<div class='card-body textWrap'>"
         businessCard += "<h5 id='BizzName'>" + name + "</h5>"
@@ -22,60 +26,90 @@ function appendHTML(img , name , address, phone , rating ) {
         businessCard += "</div>"
      
         $("#display-objects").append(businessCard);
+
+  $(businessCard).on('click', 'button', function() {
+    console.log("hi");
+    $(this).parent().remove();
+  });
+
 };
- 
+
 function initialize() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: startMapCenter,
-        zoom: 3.5
-    });
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: startMapCenter,
+    zoom: 3.5
+  });
 };
 
 function runQuery() {
-    locationInput = $("#location").val().trim();
-    typeInput = $("#search").val().trim();
-    console.log(typeInput);
-    console.log(locationInput);
+  locationInput = $("#location").val().trim();
+  typeInput = $("#search").val().trim();
+  console.log(typeInput);
+  console.log(locationInput);
 };
 
 $("#userInputButton").on("click", function() {
-    event.preventDefault();
-    runQuery();
+  event.preventDefault();
+  runQuery();
 
-    // starts the api call
-    var geocoder = new google.maps.Geocoder();
-    var address = locationInput;
-    var queryLatLng = "";
-    var ipPass = "";
-    var photoRef = "";
+  // starts the api call
+  var geocoder = new google.maps.Geocoder();
+  var address = locationInput;
+  var queryLatLng = "";
+  var ipPass = "";
+  var photoRef = "";
 
-    if (geocoder) {
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                // grabbing the lat and lng that come back from the geocoder api and logging them to console
-                console.log(results[0].geometry.location.lat());
-                console.log(results[0].geometry.location.lng());
-                // defining the variable as the latlng in the right format to sent to the places api
-                queryLatLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
-            }
-            else {
-                console.log("Geocoding failed: " + status);
-            }
-            // this is when the map will chang based on search location
-            mapAdjust();
-            // start of the places api query
+  if (geocoder) {
+    geocoder.geocode({ 'address': address }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        // grabbing the lat and lng that come back from the geocoder api and logging them to console
+        console.log(results[0].geometry.location.lat());
+        console.log(results[0].geometry.location.lng());
+        // defining the variable as the latlng in the right format to sent to the places api
+        queryLatLng = new google.maps.LatLng(results[0].geometry.location.lat(),results[0].geometry.location.lng());
+      }
+      else {
+        console.log("Geocoding failed: " + status);
+      }
+      // this is when the map will chang based on search location
+      mapAdjust();
+      // start of the places api query
 
-            var request = {
-                location: queryLatLng,
-                radius: '5000',
-                keyword: [ typeInput ]
-            };
-        
-            service = new google.maps.places.PlacesService(map);
-            service.nearbySearch(request, callback);
-        
-            function callback(results, status) {
+      var request = {
+        location: queryLatLng,
+        radius: '5000',
+        keyword: [ typeInput ]
+      };
+
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
+
+      function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            var place = results[i];
+            createMarker(results[i]);
+            console.log(results[i]);
+            idPass = results[i].place_id;
+            console.log(idPass);
+
+
+            function detailsCall() {
+
+
+
+              var request = {
+                placeId: idPass
+              };
+
+              service = new google.maps.places.PlacesService(map);
+              service.getDetails(request, callback);
+
+
+
+              function callback(resultsTwo, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
+
                     for (var i = 0; i < results.length; i++) {
                         var place = results[i];
                         createMarker(results[i]);
@@ -118,29 +152,41 @@ $("#userInputButton").on("click", function() {
                         
                         
                     }
+
                 }
-            }
+              }
 
-            function mapAdjust() {
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: queryLatLng,
-                    zoom: 13
-                });
             };
 
-            function createMarker(place) {
-                var placeLoc = place.geometry.location;
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location
-                });
-            
-            };
-            
+            detailsCall();
+
+
+
+
+          }
+        }
+      }
+
+      function mapAdjust() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: queryLatLng,
+          zoom: 13
         });
-   
-    }  
-    
+      };
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+      };
+
+    });
+
+  }
+
 });
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -151,12 +197,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
 var config = {
-    apiKey: "AIzaSyCTaFSGJiTN5r5qpLnXTOLgECDvUfWXvr4",
-    authDomain: "byteme-200420.firebaseapp.com",
-    databaseURL: "https://byteme-200420.firebaseio.com",
-    projectId: "byteme-200420",
-    storageBucket: "byteme-200420.appspot.com",
-    messagingSenderId: "65093761395"
+  apiKey: "AIzaSyCTaFSGJiTN5r5qpLnXTOLgECDvUfWXvr4",
+  authDomain: "byteme-200420.firebaseapp.com",
+  databaseURL: "https://byteme-200420.firebaseio.com",
+  projectId: "byteme-200420",
+  storageBucket: "byteme-200420.appspot.com",
+  messagingSenderId: "65093761395"
 };
 
 firebase.initializeApp(config);
