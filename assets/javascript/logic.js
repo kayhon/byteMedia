@@ -3,11 +3,10 @@ var locationInput = "";
 var typeInput = "";
 var startMapCenter = new google.maps.LatLng(37.09024,-95.71289100000001);
 var address
-var resultsZone = $('#display-left');
+var resultsZone = $('#display-objects');
 
-resultsZone.find('#pinned_bizzcard').on('click', function() {
-    $(this).appendTo('#leftSide');
-  });
+
+
 
 
 function appendHTML(img , name , address, phone , rating ) {
@@ -15,7 +14,7 @@ function appendHTML(img , name , address, phone , rating ) {
         businessCard += "<div class='container' id='pinned_bizzcard'>" 
         businessCard += "<img id='thumbnailimg' src=" + img + ">"
         businessCard += "<div class='card-body textWrap'>"
-        businessCard += "<h5 class='BizzName'>" + name + "</h5>"
+        businessCard += "<h5 id='BizzName'>" + name + "</h5>"
         businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
         businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
         businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
@@ -106,7 +105,7 @@ $("#userInputButton").on("click", function() {
                                     console.log(resultsTwo.formatted_address);
                                     console.log(resultsTwo.formatted_phone_number);
                                     console.log(resultsTwo.rating);
-                                    // function appendHTML(img , name , phone , rating )
+                                    // function appendHTML(img , name , address , phone , rating )
                                     appendHTML(resultsTwo.photos[0].getUrl({"maxWidth":200,"minWidth":200}) , resultsTwo.name , resultsTwo.formatted_address , resultsTwo.formatted_phone_number , resultsTwo.rating)
                                 }
                             }
@@ -149,6 +148,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 //  firebase
 
+
+
 var config = {
     apiKey: "AIzaSyCTaFSGJiTN5r5qpLnXTOLgECDvUfWXvr4",
     authDomain: "byteme-200420.firebaseapp.com",
@@ -157,3 +158,51 @@ var config = {
     storageBucket: "byteme-200420.appspot.com",
     messagingSenderId: "65093761395"
 };
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+console.log(firebase);
+
+function displayFirebase(img , name , address, phone , rating ) {
+    var businessCard = "";
+        businessCard += "<div class='container' id='pinned_bizzcard'>" 
+        businessCard += "<img id='thumbnailimg' src=" + img + ">"
+        businessCard += "<div class='card-body textWrap'>"
+        businessCard += "<h5 id='bizzName'>" + name + "</h5>"
+        businessCard += "<p class='card-text' id='address'>Address:" + address + "</p>"
+        businessCard += "<p class='card-text' id='phoneNumber'>Phone Number:" + phone + "</p>"
+        businessCard += "<p class='card-text' id='rating'>Ratings:" + rating + "</p>"
+        businessCard += "</div>"
+        businessCard += "</div>"
+     
+        $("#left-side").append(businessCard);
+};
+
+
+
+function add() {
+    event.preventDefault();
+
+var newBusiness = {
+    img: $('#thumbnailimg').val().trim(),
+    name: $('#BizzName').val().trim(),
+    address: $('#address1').val().trim(),
+    phone: $('#phoneNumber1').val().trim(),
+    rating: $("#rating1").val().trim()
+
+};
+
+database.ref().push(newBusiness);
+
+
+};
+
+
+// on click function push to variable arrays
+resultsZone.on('click', '#pinned_bizzcard', function() {
+    $(this).appendTo('#left-side');
+    add();
+  });
+
