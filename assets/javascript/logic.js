@@ -4,24 +4,27 @@ var typeInput = "";
 var startMapCenter = new google.maps.LatLng(37.09024,-95.71289100000001);
 var address
 var resultsZone = $('#display-objects');
+var resultZoneTwo = $('#left-side');
 
 resultsZone.on('click', '#pinned_bizzcard', function() {
 
   $(this).appendTo('#left-side');
+  add();
 });
 
-$(document).on('click', 'button', function() {
+
+$(document).on('click', '#dltbutton', function() {
   event.stopPropagation();
   $(this).parent().remove();
-})
+});
 
 function appendHTML(img , name , address, phone , rating ) {
   var businessCard = "";
   businessCard += "<div class='container' id='pinned_bizzcard'>"
-  businessCard += "<button class=‘btn btn-primary dlt_btn’ type=‘button’>Delete</button>"
+  businessCard += "<button class=‘btn btn-primary dlt_btn’ id='dltbutton' type=‘button’>Delete</button>"
   businessCard += "<img id='thumbnailimg' src=" + img + ">"
   businessCard += "<div class='card-body textWrap'>"
-  businessCard += "<h5 class='BizzName'>" + name + "</h5>"
+  businessCard += "<h5 id='BizzName'>" + name + "</h5>"
   businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
   businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
   businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
@@ -34,7 +37,7 @@ function appendHTML(img , name , address, phone , rating ) {
 
   $("#display-objects").append(businessCard);
 
-  $(businessCard).on('click', 'button', function() {
+  $(businessCard).on('click', '#dltbutton', function() {
     console.log("hi");
     $(this).parent().remove();
   });
@@ -171,4 +174,44 @@ var config = {
   projectId: "byteme-200420",
   storageBucket: "byteme-200420.appspot.com",
   messagingSenderId: "65093761395"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+console.log(firebase);
+
+function displayFirebase(img , name , address, phone , rating ) {
+    var businessCard = "";
+        businessCard += "<div class='container' id='pinned_bizzcard'>" 
+        businessCard += "<img id='thumbnailimg' src=" + img + ">"
+        businessCard += "<div class='card-body textWrap'>"
+        businessCard += "<h5 id='bizzName'>" + name + "</h5>"
+        businessCard += "<p class='card-text' id='address'>Address:" + address + "</p>"
+        businessCard += "<p class='card-text' id='phoneNumber'>Phone Number:" + phone + "</p>"
+        businessCard += "<p class='card-text' id='rating'>Ratings:" + rating + "</p>"
+        businessCard += "</div>"
+        businessCard += "</div>"
+     
+        $("#left-side").append(businessCard);
+};
+
+
+
+function add() {
+    event.preventDefault();
+
+    var newBusiness = {
+        img: $('#thumbnailimg').val().trim(),
+        name: $('#BizzName').val().trim(),
+        address: $('#address1').val().trim(),
+        phone: $('#phoneNumber1').val().trim(),
+        rating: $("#rating1").val().trim()
+
+    };
+
+    database.ref().push(newBusiness);
+
+
 };
