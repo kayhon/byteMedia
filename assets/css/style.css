@@ -2,7 +2,7 @@
 .jumbotron { 
      
     background-image: url(../images/ban1.jpg);
-    background-size: 29%;
+    background-size: 100%;
 }
 #userInputButton {
  margin-top: 10px;
