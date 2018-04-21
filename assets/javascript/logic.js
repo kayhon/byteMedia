@@ -8,8 +8,9 @@ var resultZoneTwo = $('#left-side');
 
 resultsZone.on('click', '#pinned_bizzcard', function() {
 
-  $(this).appendTo('#left-side');
-  add();
+//   $(this).appendTo('#left-side');
+  add($(this));
+  console.log($('#thumbnailimg').val().trim());
 });
 
 
@@ -24,16 +25,12 @@ function appendHTML(img , name , address, phone , rating ) {
   businessCard += "<button class=‘btn btn-primary dlt_btn’ id='dltbutton' type=‘button’>Delete</button>"
   businessCard += "<img id='thumbnailimg' src=" + img + ">"
   businessCard += "<div class='card-body textWrap'>"
-  businessCard += "<h5 id='BizzName'>" + name + "</h5>"
+  businessCard += "<h5 id='bizzName'>" + name + "</h5>"
   businessCard += "<p class='card-text' id='address1'>Address:" + address + "</p>"
   businessCard += "<p class='card-text' id='phoneNumber1'>Phone Number:" + phone + "</p>"
   businessCard += "<p class='card-text' id='rating1'>Ratings:" + rating + "</p>"
   businessCard += "</div>"
   businessCard += "</div>"
-
-
-
-
 
   $("#display-objects").append(businessCard);
 
@@ -182,32 +179,15 @@ var database = firebase.database();
 
 console.log(firebase);
 
-function displayFirebase(img , name , address, phone , rating ) {
-    var businessCard = "";
-        businessCard += "<div class='container' id='pinned_bizzcard'>" 
-        businessCard += "<img id='thumbnailimg' src=" + img + ">"
-        businessCard += "<div class='card-body textWrap'>"
-        businessCard += "<h5 id='bizzName'>" + name + "</h5>"
-        businessCard += "<p class='card-text' id='address'>Address:" + address + "</p>"
-        businessCard += "<p class='card-text' id='phoneNumber'>Phone Number:" + phone + "</p>"
-        businessCard += "<p class='card-text' id='rating'>Ratings:" + rating + "</p>"
-        businessCard += "</div>"
-        businessCard += "</div>"
-     
-        $("#left-side").append(businessCard);
-};
-
-
-
-function add() {
+function add(card) {
     event.preventDefault();
 
     var newBusiness = {
-        img: $('#thumbnailimg').val().trim(),
-        name: $('#BizzName').val().trim(),
-        address: $('#address1').val().trim(),
-        phone: $('#phoneNumber1').val().trim(),
-        rating: $("#rating1").val().trim()
+        img: $(card).find("#thumbnailimg").attr("src"),
+        name: $(card).find("#bizzName").text().trim(),
+        address: $(card).find("#address1").text().trim(),
+        phone: $(card).find("#phoneNumber1").text().trim(),
+        rating: $(card).find("#rating1").text().trim()
 
     };
 
@@ -215,3 +195,32 @@ function add() {
 
 
 };
+
+database.ref().on("child_added", function(snapshot){
+
+    var thumbnailObject = snapshot.val();
+
+
+    console.log(snapshot.val().img);
+    console.log(snapshot.val().name);
+    console.log(snapshot.val().address);
+    console.log(snapshot.val().phone);
+    console.log(snapshot.val().rating);
+
+    var businessCard = "";
+        businessCard += "<div class='container' id='pinned_bizzcard'>"
+        businessCard += "<button class=‘btn btn-primary dlt_btn’ id='dltbutton' type=‘button’>Delete</button>" 
+        businessCard += "<img id='thumbnailimg' src=" + snapshot.val().img + ">"
+        businessCard += "<div class='card-body textWrap'>"
+        businessCard += "<h5 id='bizzName'>" + snapshot.val().name + "</h5>"
+        businessCard += "<p class='card-text' id='address'>Address:" + snapshot.val().address + "</p>"
+        businessCard += "<p class='card-text' id='phoneNumber'>Phone Number:" + snapshot.val().phone + "</p>"
+        businessCard += "<p class='card-text' id='rating'>Ratings:" + snapshot.val().rating + "</p>"
+        businessCard += "</div>"
+        businessCard += "</div>"
+     
+    $("#left-side").append(businessCard);
+
+
+
+});
