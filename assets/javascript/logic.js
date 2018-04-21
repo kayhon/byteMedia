@@ -5,6 +5,12 @@ var startMapCenter = new google.maps.LatLng(37.09024,-95.71289100000001);
 var address
 var resultsZone = $('#display-objects');
 var resultZoneTwo = $('#left-side');
+var listen = $("#display-objects");
+
+
+$("#clear-results").on('click', function() {
+    clearResults();
+});
 
 resultsZone.on('click', '#pinned_bizzcard', function() {
 
@@ -22,7 +28,6 @@ $(document).on('click', '#dltbutton', function() {
 function appendHTML(img , name , address, phone , rating ) {
   var businessCard = "";
   businessCard += "<div class='container' id='pinned_bizzcard'>"
-  businessCard += "<button class=‘btn btn-primary dlt_btn’ id='dltbutton' type=‘button’>Delete</button>"
   businessCard += "<img id='thumbnailimg' src=" + img + ">"
   businessCard += "<div class='card-body textWrap'>"
   businessCard += "<h5 id='bizzName'>" + name + "</h5>"
@@ -38,6 +43,10 @@ function appendHTML(img , name , address, phone , rating ) {
     console.log("hi");
     $(this).parent().remove();
   });
+};
+
+function clearResults() {
+    $("#display-objects").empty();
 };
 
 function initialize() {
